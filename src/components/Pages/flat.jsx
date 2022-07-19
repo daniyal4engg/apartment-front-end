@@ -21,12 +21,18 @@ import {
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// import { Post } from "../pagination/Posts";
+// import { Paginate } from "../pagination/Paginate";
 export const Flat = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(false);
   const [sort, setSort] = useState("asc");
   const [ownTent, setOwnTent] = useState("Owner");
+
+  //pagination state
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postPerPage, setPostPerPage] = useState(2);
 
   useEffect(() => {
     setLoading(true);
@@ -57,6 +63,11 @@ export const Flat = () => {
   // const handleOwnerTenant = (e) => {
   //   setOwnTent(e.target.value);
   // };
+
+  //Pagination
+  // const indexOfLastPost = currentPage * postPerPage;
+  // const indexOfFirstPost = indexOfLastPost - postPerPage;
+  // const currentPost = data.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <div>
@@ -154,6 +165,8 @@ export const Flat = () => {
           </Center>
         </WrapItem>
       </Wrap>
+      {/* <Post posts={data} />
+      <Paginate postPerPage={postPerPage} totalPosts={data.length} /> */}
     </div>
   );
 };
