@@ -6,11 +6,13 @@ import { FlatForm } from "./Pages/flatForm";
 import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { FlatDetails } from "./flatDetails";
+// import { Protected } from "./Pages/Protected";
 export const AllRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+        {/* using protected routes here */}
         <Routes>
           <Route path="/" element={<Home />}>
             home

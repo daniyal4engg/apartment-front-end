@@ -9,12 +9,11 @@ import {
   Link,
   Button,
   Heading,
-  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +41,7 @@ export const Login = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
+
   return (
     <Flex
       minH={"100vh"}
@@ -51,10 +51,7 @@ export const Login = () => {
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Sign in to your account</Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool <Link color={"blue.400"}>features</Link> ✌️
-          </Text>
+          <Heading fontSize={"4xl"}>Log In </Heading>
         </Stack>
         <Box
           rounded={"lg"}
@@ -92,6 +89,11 @@ export const Login = () => {
               >
                 Sign in
               </Button>
+            </Stack>
+            <Stack pt={6}>
+              <NavLink color={"blue.400"} to="/signup">
+                Cretae Account
+              </NavLink>
             </Stack>
           </Stack>
         </Box>

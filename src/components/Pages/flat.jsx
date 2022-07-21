@@ -71,7 +71,6 @@ export const Flat = () => {
 
   return (
     <div>
-      <h1>Flat Page</h1>
       {/* Loading indicator */}
       {loading && (
         <div>

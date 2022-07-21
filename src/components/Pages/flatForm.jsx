@@ -43,7 +43,7 @@ export const FlatForm = () => {
       });
   };
   return (
-    <div>
+    <div className="overall">
       <div className="parent">
         <p> Add flat</p>
         <form onSubmit={handleSubmit}>
