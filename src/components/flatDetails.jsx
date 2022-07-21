@@ -2,20 +2,13 @@ import axios from "axios";
 // chakra
 import {
   Box,
-  SimpleGrid,
   GridItem,
   Grid,
-  Center,
-  Flex,
   Divider,
   Table,
-  Thead,
   Tbody,
-  Tfoot,
   Tr,
-  Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
 

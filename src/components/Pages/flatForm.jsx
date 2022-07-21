@@ -2,7 +2,9 @@ import "../../styles/flatform.css";
 import { useState } from "react";
 import axios from "axios";
 import { useToast, Button } from "@chakra-ui/react";
+import { Navigate, useNavigate } from "react-router-dom";
 export const FlatForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     block: "",
     flat_number: "",
@@ -40,6 +42,7 @@ export const FlatForm = () => {
           gender: "",
           age: "",
         });
+        navigate("/flat");
       });
   };
   return (

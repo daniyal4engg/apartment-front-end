@@ -1,6 +1,6 @@
 import "../../src/styles/Navbar.css";
 import { Link } from "react-router-dom";
-import { Wrap } from "@chakra-ui/react";
+
 export const Navbar = () => {
   return (
     <div>

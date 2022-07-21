@@ -2,7 +2,7 @@ import "../../styles/home.css";
 import { Link } from "react-router-dom";
 export const Home = () => {
   return (
-    <div className="backgroundImage center">
+    <div className="backgroundImageHome center">
       <h1 className="heading">Apartment Management System</h1>
 
       <button

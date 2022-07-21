@@ -28,16 +28,13 @@ export const Flat = () => {
   const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(false);
   const [sort, setSort] = useState("asc");
-  const [ownTent, setOwnTent] = useState("Owner");
-
-  //pagination state
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [postPerPage, setPostPerPage] = useState(2);
+  const [filterValue, setFilterValue] = useState([]);
+  // filter
 
   useEffect(() => {
     setLoading(true);
     getFlatData();
-  }, [sort]);
+  }, [data]);
   // function
   const getFlatData = () => {
     setLoading(true);
@@ -59,18 +56,38 @@ export const Flat = () => {
     ? data.sort((a, b) => a.flat_number - b.flat_number)
     : data.sort((a, b) => b.flat_number - a.flat_number);
 
-  // sort by owner tenant
-  // const handleOwnerTenant = (e) => {
-  //   setOwnTent(e.target.value);
-  // };
+  //filter
+  const handleFilter = (e) => {
+    let Element = [...data];
+    Element = Element.filter((item) => item.type === e);
+    setData(Element);
+    console.log(Element);
+  };
 
-  //Pagination
-  // const indexOfLastPost = currentPage * postPerPage;
-  // const indexOfFirstPost = indexOfLastPost - postPerPage;
-  // const currentPost = data.slice(indexOfFirstPost, indexOfLastPost);
+  //load more end Data
+  // const [endUpto, setendUpto] = useState(2);
+  // const loadMoreData = () => {
+  //   setendUpto(endUpto + 2);
+  // };
+  // slice(0, endUpto)
+  const [start, setstart] = useState(0);
+  const [end, setend] = useState(2);
+
+  const next = () => {
+    setend(end + 1);
+    setstart(start + 1);
+  };
+  const previous = () => {
+    if (start < 1) {
+      setstart(2);
+      setend(3);
+    }
+    setend(end - 1);
+    setstart(start - 1);
+  };
 
   return (
-    <div>
+    <div className="backgroundImage">
       {/* Loading indicator */}
       {loading && (
         <div>
@@ -83,7 +100,7 @@ export const Flat = () => {
         {/* asc desc */}
         <WrapItem>
           <Center>
-            <Box w="50">
+            <Box w="50" className="btnBorderClr">
               <Select
                 placeholder="Sort by Flat Number"
                 value={sort}
@@ -97,14 +114,15 @@ export const Flat = () => {
         </WrapItem>
         {/* owner tenant */}
         <WrapItem>
+          {/* filter */}
           <Center>
-            <Box w="50">
+            <Box w="50" className="btnBorderClr">
               <Select
                 placeholder="Resident Type"
-                value={ownTent}
-                // onChange={}
+                value={data}
+                onChange={(e) => handleFilter(e.target.value)}
               >
-                <option value="Owner">Owner</option>
+                <option value="owner">Owner</option>
                 <option value="Tenent">Tenant</option>
               </Select>
             </Box>
@@ -137,7 +155,7 @@ export const Flat = () => {
                   </Thead>
 
                   <Tbody>
-                    {data.map((e, i) => {
+                    {data.slice(start, end).map((e, i) => {
                       return (
                         <Tr key={i}>
                           <Td>{e.block}</Td>
@@ -159,13 +177,31 @@ export const Flat = () => {
                     })}
                   </Tbody>
                 </Table>
+                {/* <Button onClick={loadMoreData}>Load more</Button> */}
+                <button
+                  className="btn"
+                  style={{ margin: "20px" }}
+                  onClick={() => {
+                    previous();
+                  }}
+                >
+                  Previous
+                </button>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    next();
+                  }}
+                >
+                  Next
+                </button>
               </TableContainer>
             </Box>
           </Center>
         </WrapItem>
       </Wrap>
       {/* <Post posts={data} />
-      <Paginate postPerPage={postPerPage} totalPosts={data.length} /> */}
+      <Paginate postPerend={postPerend} totalPosts={data.length} /> */}
     </div>
   );
 };
