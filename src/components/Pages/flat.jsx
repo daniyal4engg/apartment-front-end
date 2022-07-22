@@ -21,20 +21,16 @@ import {
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { Post } from "../pagination/Posts";
-// import { Paginate } from "../pagination/Paginate";
 export const Flat = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(false);
   const [sort, setSort] = useState("asc");
-  const [filterValue, setFilterValue] = useState([]);
   // filter
 
   useEffect(() => {
     setLoading(true);
     getFlatData();
-  }, [data]);
+  }, []);
   // function
   const getFlatData = () => {
     setLoading(true);
@@ -49,7 +45,6 @@ export const Flat = () => {
 
   // sort asc desc
   const handleSort = (e) => {
-    // console.log(e.target.value);
     setSort(e.target.value);
   };
   sort === "asc"
@@ -70,22 +65,45 @@ export const Flat = () => {
   //   setendUpto(endUpto + 2);
   // };
   // slice(0, endUpto)
-  const [start, setstart] = useState(0);
-  const [end, setend] = useState(2);
+  const [start, setStart] = useState(0);
+  const [end, setend] = useState(3);
 
+  // page next and stop
   const next = () => {
-    setend(end + 1);
-    setstart(start + 1);
+    setStart(start + 3);
+    setend(end + 3);
+    if (end > data.length - 1) {
+      setStart(data.length - 3);
+      setend(data.length);
+    }
   };
+  // page previos and stop
   const previous = () => {
-    if (start < 1) {
-      setstart(2);
+    setStart(start - 3);
+    setend(end - 3);
+    if (start < 1 || end < 3) {
+      setStart(0);
       setend(3);
     }
-    setend(end - 1);
-    setstart(start - 1);
   };
 
+  // const removeData = (_id) => {
+  //   axios.delete(`${"http://localhost:8080/cities"}/${_id}`).then(() => {
+  //     const del = data.filter((data) => _id != data._id);
+  //     setData(del);
+  //   });
+  // };
+
+  const deleteButton = (_id) => {
+    console.log(_id);
+    axios
+      .delete(`${"https://apartmentauth.herokuapp.com/flat"}/${_id}`)
+      .then(() => {
+        let newList = data.filter((el) => el._id !== _id);
+
+        setData(newList);
+      });
+  };
   return (
     <div className="backgroundImage">
       {/* Loading indicator */}
@@ -94,6 +112,7 @@ export const Flat = () => {
           <Spinner size="xl" />
         </div>
       )}
+
       {/* Error indicator */}
 
       <Wrap>
@@ -151,6 +170,7 @@ export const Flat = () => {
                       <Th>Type</Th>
                       <Th isNumeric>Number of Residents</Th>
                       <Th>image</Th>
+                      <Th>Remove Flat</Th>
                     </Tr>
                   </Thead>
 
@@ -171,6 +191,14 @@ export const Flat = () => {
                                 height="200px"
                               />
                             </Link>
+                          </Td>
+                          <Td>
+                            <button
+                              className="delBtn"
+                              onClick={() => deleteButton(e._id)}
+                            >
+                              delete
+                            </button>
                           </Td>
                         </Tr>
                       );

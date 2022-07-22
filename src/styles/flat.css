@@ -23,3 +23,17 @@
   border-radius: 5px;
   width: 80px;
 }
+.delBtn {
+  background-color: black;
+  color: white;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.delBtn:hover {
+  background-color: white;
+  color: black;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 10px;
+}
