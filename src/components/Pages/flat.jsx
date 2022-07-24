@@ -117,44 +117,46 @@ export const Flat = () => {
 
       <Wrap>
         {/* asc desc */}
-        <WrapItem>
-          <Center>
-            <Box w="50" className="btnBorderClr">
-              <Select
-                placeholder="Sort by Flat Number"
-                value={sort}
-                onChange={handleSort}
-              >
-                <option value="asc">Ascending</option>
-                <option value="desc">Descending</option>
-              </Select>
-            </Box>
-          </Center>
-        </WrapItem>
-        {/* owner tenant */}
-        <WrapItem>
-          {/* filter */}
-          <Center>
-            <Box w="50" className="btnBorderClr">
-              <Select
-                placeholder="Resident Type"
-                value={data}
-                onChange={(e) => handleFilter(e.target.value)}
-              >
-                <option value="owner">Owner</option>
-                <option value="Tenent">Tenant</option>
-              </Select>
-            </Box>
-          </Center>
-        </WrapItem>
-        {/* add flat in back-end */}
-        <WrapItem>
-          <Center>
-            <Link to="/flatform">
-              <Button>add flat</Button>
-            </Link>
-          </Center>
-        </WrapItem>
+        <Box className="leftContainer">
+          <WrapItem>
+            <Center>
+              <Box w="50" className="btnBorderClr">
+                <Select
+                  placeholder="Sort by Flat Number"
+                  value={sort}
+                  onChange={handleSort}
+                >
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
+                </Select>
+              </Box>
+            </Center>
+          </WrapItem>
+          {/* owner tenant */}
+          <WrapItem>
+            {/* filter */}
+            <Center>
+              <Box w="50" className="btnBorderClr">
+                <Select
+                  placeholder="Resident Type"
+                  value={data}
+                  onChange={(e) => handleFilter(e.target.value)}
+                >
+                  <option value="owner">Owner</option>
+                  <option value="Tenent">Tenant</option>
+                </Select>
+              </Box>
+            </Center>
+          </WrapItem>
+          {/* add flat in back-end */}
+          <WrapItem>
+            <Center>
+              <Link to="/flatform">
+                <Button className="btn1">add flat</Button>
+              </Link>
+            </Center>
+          </WrapItem>
+        </Box>
         {/* table */}
         <WrapItem>
           <Center>
@@ -167,6 +169,7 @@ export const Flat = () => {
                     <Tr>
                       <Th>Block</Th>
                       <Th>Flat Number</Th>
+                      <Th>Resident Name</Th>
                       <Th>Type</Th>
                       <Th isNumeric>Number of Residents</Th>
                       <Th>image</Th>
@@ -180,6 +183,7 @@ export const Flat = () => {
                         <Tr key={i}>
                           <Td>{e.block}</Td>
                           <Td>{e.flat_number}</Td>
+                          <Td>{e.name}</Td>
                           <Td>{e.type}</Td>
                           <Td isNumeric>{e.residents}</Td>
                           <Td>

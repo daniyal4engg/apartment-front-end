@@ -4,9 +4,24 @@
   font-weight: bold;
   height: 100%;
 }
+.leftContainer {
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .btnBorderClr {
   background-color: rgb(251, 251, 251);
   border-radius: 15px;
+  width: 170px;
+  margin-bottom: 30px;
+}
+
+.btn1:hover {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  color: black;
 }
 
 .btn {
