@@ -26,11 +26,13 @@ export const Login = () => {
         password: password,
       })
       .then((res) => {
+        alert("Access Allowed");
         navigate("/");
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((e) => {
         console.log(e.message);
+        alert("Password is Wrong");
         navigate("/signup");
       });
   };

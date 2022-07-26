@@ -31,7 +31,7 @@ export const FlatForm = () => {
     axios
       .post("https://apartmentauth.herokuapp.com/flat", formData)
       .then(() => {
-        alert("user created succussfully");
+        alert("Flat added succussfully");
         setFormData({
           block: "",
           flat_number: "",

@@ -107,12 +107,12 @@ export const Flat = () => {
   return (
     <div className="backgroundImage">
       {/* Loading indicator */}
-      {loading && (
+      {/* {loading && (
         <div>
           <Spinner size="xl" />
         </div>
-      )}
-
+      )} */}
+      {loading ? "...loading===================" : ""}
       {/* Error indicator */}
 
       <Wrap>
