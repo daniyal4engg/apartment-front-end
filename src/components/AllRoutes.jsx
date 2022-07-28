@@ -6,7 +6,8 @@ import { FlatForm } from "./Pages/flatForm";
 import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { FlatDetails } from "./flatDetails";
-// import { Protected } from "./Pages/Protected";
+import { ProtectedRoute } from "./Context/ProtectedRoute";
+
 export const AllRoutes = () => {
   return (
     <>
@@ -17,7 +18,14 @@ export const AllRoutes = () => {
           <Route path="/" element={<Home />}>
             home
           </Route>
-          <Route path="/flat" element={<Flat />}>
+          <Route
+            path="/flat"
+            element={
+              <ProtectedRoute>
+                <Flat />
+              </ProtectedRoute>
+            }
+          >
             flat
           </Route>
           {/* :id params */}

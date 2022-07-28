@@ -12,14 +12,19 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+// login check
+import { useAuth } from "../Context/Auth";
 export const Login = () => {
+  const [user, setUser] = useState("");
+  const auth = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleLogin = (email, password) => {
+    auth.login(!user); /* auth */
     axios
       .post("https://apartmentauth.herokuapp.com/login", {
         email: email,
@@ -28,7 +33,7 @@ export const Login = () => {
       .then((res) => {
         alert("Access Allowed");
         navigate("/");
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch((e) => {
         console.log(e.message);

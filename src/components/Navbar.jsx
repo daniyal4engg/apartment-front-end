@@ -1,7 +1,9 @@
 import "../../src/styles/Navbar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "./Context/Auth";
 
 export const Navbar = () => {
+  const auth = useAuth();
   return (
     <div>
       <div
@@ -28,7 +30,8 @@ export const Navbar = () => {
           <Link to="/signup" style={{ marginRight: "15px" }}>
             signUp
           </Link>
-          <Link to="/login">logIn</Link>
+
+          {!auth.user && <Link to="/login">logIn</Link>}
         </div>
       </div>
     </div>

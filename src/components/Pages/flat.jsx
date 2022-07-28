@@ -1,6 +1,4 @@
 import "../../styles/flat.css";
-import axios from "axios";
-
 // chakra
 import {
   Table,
@@ -18,10 +16,15 @@ import {
   Button,
   Spinner,
 } from "@chakra-ui/react";
-
+import axios from "axios";
+import { useAuth } from "../Context/Auth";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-export const Flat = () => {
+import { Link, useNavigate } from "react-router-dom";
+export const Flat = ({ check }) => {
+  // login
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("asc");
@@ -41,7 +44,8 @@ export const Flat = () => {
       .then((r) => setData(r.data), setLoading(false))
       .catch((err) => console.log("error", err.message));
   };
-  console.log("data", data);
+
+  console.log("update data", data);
 
   // sort asc desc
   const handleSort = (e) => {
@@ -54,9 +58,10 @@ export const Flat = () => {
   //filter
   const handleFilter = (e) => {
     let Element = [...data];
+
     Element = Element.filter((item) => item.type === e);
     setData(Element);
-    console.log(Element);
+    // console.log(Element)
   };
 
   //load more end Data
@@ -87,13 +92,7 @@ export const Flat = () => {
     }
   };
 
-  // const removeData = (_id) => {
-  //   axios.delete(`${"http://localhost:8080/cities"}/${_id}`).then(() => {
-  //     const del = data.filter((data) => _id != data._id);
-  //     setData(del);
-  //   });
-  // };
-
+  // delete data
   const deleteButton = (_id) => {
     console.log(_id);
     axios
@@ -104,23 +103,27 @@ export const Flat = () => {
         setData(newList);
       });
   };
+  // logout btn extra
+  const handlelogout = () => {
+    auth.logout();
+    navigate("/");
+  };
+
   return (
     <div className="backgroundImage">
       {/* Loading indicator */}
-      {/* {loading && (
-        <div>
-          <Spinner size="xl" />
-        </div>
-      )} */}
-      {loading ? "...loading===================" : ""}
+      {loading ? <Spinner size="xl" /> : ""}
       {/* Error indicator */}
-
+      <div>
+        welcom {auth.user}
+        <button onClick={handlelogout}>Logout</button>
+      </div>
       <Wrap>
         {/* asc desc */}
         <Box className="leftContainer">
           <WrapItem>
             <Center>
-              <Box w="50" className="btnBorderClr">
+              <Box w="50" className="btnBorderSelect">
                 <Select
                   placeholder="Sort by Flat Number"
                   value={sort}
@@ -137,14 +140,17 @@ export const Flat = () => {
             {/* filter */}
             <Center>
               <Box w="50" className="btnBorderClr">
-                <Select
-                  placeholder="Resident Type"
-                  value={data}
-                  onChange={(e) => handleFilter(e.target.value)}
-                >
-                  <option value="owner">Owner</option>
-                  <option value="Tenent">Tenant</option>
-                </Select>
+                <button onClick={() => handleFilter("owner")}>Owner</button>
+              </Box>
+            </Center>
+          </WrapItem>
+          <WrapItem>
+            {/* filter */}
+            <Center>
+              <Box w="50" className="btnBorderClr">
+                <Box>
+                  <button onClick={() => handleFilter("Tenant")}>Tenant</button>
+                </Box>
               </Box>
             </Center>
           </WrapItem>

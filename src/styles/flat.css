@@ -16,6 +16,11 @@
   margin-bottom: 30px;
 }
 
+.btnBorderClr:hover {
+  color: rgb(251, 251, 251);
+  background-color: black;
+}
+
 .btn1:hover {
   border: 1px solid black;
   padding: 5px;
@@ -51,4 +56,15 @@
   padding: 8px;
   font-weight: bold;
   border-radius: 10px;
+}
+
+.fliterBtn {
+  background-color: black;
+  color: white;
+}
+.btnBorderSelect {
+  background-color: rgb(251, 251, 251);
+  border-radius: 15px;
+  width: 170px;
+  margin-bottom: 30px;
 }

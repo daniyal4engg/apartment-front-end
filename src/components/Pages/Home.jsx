@@ -15,7 +15,7 @@ export const Home = () => {
           marginTop: "20px",
         }}
       >
-        <Link to="/flatform">click to add flat</Link>
+        <Link to="/flat">click to add flat</Link>
       </button>
     </div>
   );
