@@ -1,8 +1,9 @@
 .backgroundImage {
-  background: url("https://images.unsplash.com/photo-1623594616621-7724c026ba88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background: url("https://wallpapercave.com/wp/wp4849737.jpg");
   color: rgb(0, 0, 0);
   font-weight: bold;
   height: 100%;
+  padding-top: 10px;
 }
 .leftContainer {
   padding-top: 100px;
@@ -20,11 +21,14 @@
   color: rgb(251, 251, 251);
   background-color: black;
 }
-
+.btn1 {
+  border-radius: 15px;
+  background-color: #ffa07a;
+}
 .btn1:hover {
   border: 1px solid black;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 15px;
   width: 100px;
   color: black;
 }
@@ -65,6 +69,23 @@
 .btnBorderSelect {
   background-color: rgb(251, 251, 251);
   border-radius: 15px;
+
   width: 170px;
   margin-bottom: 30px;
+}
+.flexDiv {
+  margin-right: 150px;
+  font-size: large;
+  background-color: black;
+  color: white;
+  padding: 5px 5px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+  width: 90px;
+}
+.flx {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }

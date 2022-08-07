@@ -11,9 +11,7 @@ import {
   Stack,
   Button,
   Heading,
-  Text,
   useColorModeValue,
-  LinkBox,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -93,7 +91,7 @@ export const Signup = () => {
           boxShadow={"lg"}
           p={8}
         >
-          <Stack spacing={4}>
+          <Stack spacing={3}>
             <HStack>
               <Box>
                 <FormControl id="firstName" isRequired>
@@ -157,11 +155,10 @@ export const Signup = () => {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
-            <Stack spacing={10} pt={2}>
+            <Stack spacing={10}>
               <Button
                 onClick={handleSubmit}
                 loadingText="Submitting"
-                size="lg"
                 bg={"blue.400"}
                 color={"white"}
                 _hover={{

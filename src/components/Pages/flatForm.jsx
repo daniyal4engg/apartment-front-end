@@ -78,7 +78,7 @@ export const FlatForm = () => {
             value={formData.type}
             onChange={handleChange}
             id="type"
-            placeholder="Type"
+            placeholder="Owner / Tenant"
           />
           <br />
           {/* <label htmlFor="imageUrl">Image</label> */}

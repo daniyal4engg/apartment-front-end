@@ -5,17 +5,10 @@ export const Home = () => {
     <div className="backgroundImageHome center">
       <h1 className="heading">Apartment Management System</h1>
 
-      <button
-        style={{
-          backgroundColor: "black",
-          color: "PaleTurquoise",
-          margin: "auto",
-          padding: "10px",
-          borderRadius: "5px",
-          marginTop: "20px",
-        }}
-      >
-        <Link to="/flat">click to add flat</Link>
+      <button className="addBtn">
+        <Link to="/flat" className="clickBtn">
+          Add Flat
+        </Link>
       </button>
     </div>
   );

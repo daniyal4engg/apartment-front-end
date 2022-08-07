@@ -28,6 +28,7 @@ export const Flat = ({ check }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("asc");
+  // const [filterData, setFilterData] = useState([]);
   // filter
 
   useEffect(() => {
@@ -56,12 +57,26 @@ export const Flat = ({ check }) => {
     : data.sort((a, b) => b.flat_number - a.flat_number);
 
   //filter
-  const handleFilter = (e) => {
-    let Element = [...data];
+  // const handleFilter = (e) => {
+  //   let Element = [...data];
 
-    Element = Element.filter((item) => item.type === e);
-    setData(Element);
-    // console.log(Element)
+  //   Element = Element.filter((item) => item.type === e);
+  //   setData(Element);
+  //   // console.log(Element)
+  // };
+
+  const handleFilterOwner = () => {
+    // setData(data);
+    let filterOwner = [...data];
+    filterOwner = filterOwner.filter((item) => item.type === "owner");
+    setData([...filterOwner]);
+  };
+
+  const handleFilterTenant = () => {
+    // setData(data);
+    let filterTenant = [...data];
+    filterTenant = filterTenant.filter((item) => item.type === "tenant");
+    setData([...filterTenant]);
   };
 
   //load more end Data
@@ -104,30 +119,32 @@ export const Flat = ({ check }) => {
       });
   };
   // logout btn extra
-  const handlelogout = () => {
-    auth.logout();
-    navigate("/");
-  };
+  // const handlelogout = () => {
+  //   auth.logout();
+  //   navigate("/");
+  // };
 
   return (
     <div className="backgroundImage">
       {/* Loading indicator */}
       {loading ? <Spinner size="xl" /> : ""}
-      {/* Error indicator */}
-      <div>
-        welcom {auth.user}
-        <button onClick={handlelogout}>Logout</button>
-      </div>
+      {/* <div className="flx">
+        <div className="flexDiv">
+          {auth.user}
+          <button onClick={handlelogout}>Logout</button>
+        </div>
+      </div> */}
       <Wrap>
         {/* asc desc */}
         <Box className="leftContainer">
           <WrapItem>
-            <Center>
-              <Box w="50" className="btnBorderSelect">
+            <Center className="btnBorderSelect">
+              <Box w="50">
                 <Select
                   placeholder="Sort by Flat Number"
                   value={sort}
                   onChange={handleSort}
+                  style={{ border: "none" }}
                 >
                   <option value="asc">Ascending</option>
                   <option value="desc">Descending</option>
@@ -140,7 +157,7 @@ export const Flat = ({ check }) => {
             {/* filter */}
             <Center>
               <Box w="50" className="btnBorderClr">
-                <button onClick={() => handleFilter("owner")}>Owner</button>
+                <button onClick={handleFilterOwner}>Owner</button>
               </Box>
             </Center>
           </WrapItem>
@@ -149,7 +166,8 @@ export const Flat = ({ check }) => {
             <Center>
               <Box w="50" className="btnBorderClr">
                 <Box>
-                  <button onClick={() => handleFilter("Tenant")}>Tenant</button>
+                  {/* <button onClick={() => handleFilter("Tenant")}>Tenant</button> */}
+                  <button onClick={handleFilterTenant}>Tenant</button>
                 </Box>
               </Box>
             </Center>
@@ -158,7 +176,7 @@ export const Flat = ({ check }) => {
           <WrapItem>
             <Center>
               <Link to="/flatform">
-                <Button className="btn1">add flat</Button>
+                <Button className="btn1">Add Flat</Button>
               </Link>
             </Center>
           </WrapItem>
@@ -172,7 +190,7 @@ export const Flat = ({ check }) => {
                 <Center></Center>
                 <Table>
                   <Thead bg="LightSalmon">
-                    <Tr>
+                    <Tr style={{ fontFamily: "fantasy" }}>
                       <Th>Block</Th>
                       <Th>Flat Number</Th>
                       <Th>Resident Name</Th>
