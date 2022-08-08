@@ -21,13 +21,16 @@ export const FlatForm = () => {
       ...formData,
       [id]: value,
     });
-    // console.log(e.target);
+    // console.log("valid", value);
+    // console.log("valid", e.target);
+    // console.log("valid", id);
   };
-
+  const [validate, setValidate] = useState(true);
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData);
-
+    if (!e.target.value) {
+      setValidate(false);
+    }
     axios
       .post("https://apartmentauth.herokuapp.com/flat", formData)
       .then(() => {
@@ -50,8 +53,6 @@ export const FlatForm = () => {
       <div className="parent">
         <p> Add flat</p>
         <form onSubmit={handleSubmit}>
-          {/* <label htmlFor="block">Block </label> */}
-
           <input
             className="border"
             type="text"
@@ -61,7 +62,12 @@ export const FlatForm = () => {
             placeholder="Block"
           />
           <br />
-          {/* <label htmlFor="flat-Number">Flat Number</label> */}
+          {/* vaidation */}
+          {validate ? (
+            ""
+          ) : (
+            <label className="validRes">Block feild should not be empty</label>
+          )}
           <input
             className="border"
             type="text"
@@ -71,7 +77,13 @@ export const FlatForm = () => {
             placeholder="Flat Number"
           />
           <br />
-          {/* <label htmlFor="Type">Type of Flat</label> */}
+          {validate ? (
+            ""
+          ) : (
+            <label className="validRes">
+              Flat Number feild should not be empty
+            </label>
+          )}
           <input
             className="border"
             type="text"
@@ -81,7 +93,11 @@ export const FlatForm = () => {
             placeholder="Owner / Tenant"
           />
           <br />
-          {/* <label htmlFor="imageUrl">Image</label> */}
+          {validate ? (
+            ""
+          ) : (
+            <label className="validRes">Type feild should not be empty</label>
+          )}
           <input
             className="border"
             type="text"
@@ -91,7 +107,11 @@ export const FlatForm = () => {
             placeholder="Image"
           />
           <br />
-          {/* <label htmlFor="residents">Residence</label> */}
+          {validate ? (
+            ""
+          ) : (
+            <label className="validRes">Please enter valid Url</label>
+          )}
           <input
             className="border"
             type="text"
@@ -101,7 +121,13 @@ export const FlatForm = () => {
             placeholder="No of residence"
           />
           <br />
-          {/* <label htmlFor="name">Name</label> */}
+          {validate ? (
+            ""
+          ) : (
+            <label className="validRes">
+              Resident feild should not be emply
+            </label>
+          )}
           <input
             className="border"
             type="text"
@@ -111,7 +137,11 @@ export const FlatForm = () => {
             placeholder="Name"
           />
           <br />
-          {/* <label htmlFor="fgender">Gender</label> */}
+          {validate ? (
+            ""
+          ) : (
+            <label className="validRes">Name feild should not be emply</label>
+          )}
           <input
             className="border"
             type="text"
@@ -121,7 +151,13 @@ export const FlatForm = () => {
             placeholder="Gender"
           />
           <br />
-          {/* <label htmlFor="age">Age</label> */}
+          {validate ? (
+            ""
+          ) : (
+            <label htmlFor="flat-Number" className="validRes">
+              Gender feild should not be emply
+            </label>
+          )}
           <input
             className="border"
             type="text"
@@ -130,6 +166,15 @@ export const FlatForm = () => {
             id="age"
             placeholder="Age"
           />
+          <br />
+          {validate ? (
+            ""
+          ) : (
+            <label htmlFor="flat-Number" className="validRes">
+              Age feild should not be emply
+            </label>
+          )}
+
           <br />
           <input className="btnSumit" type="submit" />
         </form>

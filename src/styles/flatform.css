@@ -1,13 +1,14 @@
 .border {
   border: 1px solid rgb(38, 46, 55);
   padding: 3px;
-  width: 400px;
-  margin-bottom: 10px;
+  width: 280px;
+  height: auto;
+  margin-bottom: 5px;
 }
 input {
   font-weight: bold;
-
-  background-color: bisque;
+  padding: 5px;
+  background-color: rgb(253, 253, 253);
 }
 p {
   font-size: 40px;
@@ -32,11 +33,21 @@ p {
   background-color: black;
   margin: auto;
   padding: 30px;
-  width: 500px;
-  height: auto;
+  width: 400px;
+  /* height: 700px; */
+  padding: 20px;
   background-image: url("https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80");
 }
 .overall {
   background-image: url("https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   height: 100vh;
+}
+form .validRes {
+  color: rgb(169, 48, 48);
+  /* padding-left: 0px; */
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 40px;
+  margin-top: 0px;
+  font-size: small;
 }
