@@ -63,6 +63,7 @@ export const Login = () => {
         <Box
           rounded={"lg"}
           bg={useColorModeValue("white", "gray.700")}
+          w="350px"
           boxShadow={"lg"}
           p={8}
         >

@@ -50,8 +50,8 @@ export const FlatForm = () => {
   };
   return (
     <div className="overall">
+      <p className="paragraph"> Add flat</p>
       <div className="parent">
-        <p> Add flat</p>
         <form onSubmit={handleSubmit}>
           <input
             className="border"

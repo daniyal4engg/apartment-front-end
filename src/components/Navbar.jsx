@@ -11,18 +11,29 @@ export const Navbar = () => {
     navigate("/");
   };
   return (
-    <div>
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        width: "100%",
+        backgroundColor: "black",
+
+        borderBottom: "5px solid DarkGray",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <div
         style={{
           display: "flex",
-          justifyContent: "space-around",
-          backgroundColor: "black",
+          justifyContent: "space-between",
+
           color: "white",
           alignItems: "center",
           fontSize: "27px",
-          borderBottom: "5px solid DarkGray",
-          fontWeight: "bold",
-          height: "65px",
+          height: "70px",
+          width: "1280px",
+          padding: "22px",
         }}
       >
         <div>
@@ -31,10 +42,11 @@ export const Navbar = () => {
           </Link>
           <Link to="/flat">Flat</Link>
         </div>
+        {/* <div>Niice</div> */}
 
         <div>
           <Link to="/signup" style={{ marginRight: "50px" }}>
-            SignUp
+            Signup
           </Link>
 
           {!auth.user ? (

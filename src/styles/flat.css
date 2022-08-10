@@ -1,34 +1,37 @@
-.backgroundImage {
+/* .backgroundImage {
   background: url("https://wallpapercave.com/wp/wp4849737.jpg");
   color: rgb(0, 0, 0);
   font-weight: bold;
   height: 100%;
   padding-top: 10px;
-}
+} */
 .leftContainer {
   padding-top: 100px;
   padding-left: 20px;
   padding-right: 20px;
 }
 .btnBorderClr {
-  background-color: rgb(251, 251, 251);
-  border-radius: 15px;
+  background-color: #e5ebf2;
+  border-radius: 5px;
   width: 170px;
   margin-bottom: 30px;
+  font-size: 18px;
 }
-
+.btnBorderClrChild {
+  padding: 8px;
+}
 .btnBorderClr:hover {
   color: rgb(251, 251, 251);
   background-color: black;
 }
 .btn1 {
-  border-radius: 15px;
-  background-color: #ffa07a;
+  border-radius: 5px;
+  /* background-color: #ffa07a; */
 }
 .btn1:hover {
   border: 1px solid black;
   padding: 5px;
-  border-radius: 15px;
+  border-radius: 5px;
   width: 100px;
   color: black;
 }
@@ -50,16 +53,17 @@
 .delBtn {
   background-color: black;
   color: white;
-  padding: 8px;
-  font-weight: bold;
-  border-radius: 10px;
+  padding: 8px 12px;
+  /* font-weight: bold; */
+  border-radius: 5px;
 }
 .delBtn:hover {
-  background-color: white;
-  color: black;
-  padding: 8px;
-  font-weight: bold;
-  border-radius: 10px;
+  background-color: red;
+  font-size: 1.1rem;
+  color: white;
+  padding: 10px 16px;
+  /* font-weight: bold; */
+  border-radius: 5px;
 }
 
 .fliterBtn {
@@ -68,7 +72,7 @@
 }
 .btnBorderSelect {
   background-color: rgb(251, 251, 251);
-  border-radius: 15px;
+  border-radius: 5px;
 
   width: 170px;
   margin-bottom: 30px;
@@ -88,4 +92,46 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
+}
+.navbar2 {
+  margin-top: 98px;
+  width: 1280px;
+
+  /* text-transform: capitalize; */
+}
+
+/* .center {
+  display: flex;
+  justify-content: center;
+} */
+th {
+  text-transform: lowercase;
+}
+
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: normal;
+  text-align: center;
+  background-color: #e5ebf2;
+}
+.fontsize {
+  font-size: 18px;
+}
+
+#one {
+  border-radius: 5px 0px 0px 5px;
+}
+#seven {
+  border-radius: 0px 5px 5px 0px;
+}
+.Tr {
+  background-color: #e5ebf2;
+  border-radius: 5px;
 }

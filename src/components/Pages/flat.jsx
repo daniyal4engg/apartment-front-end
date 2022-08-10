@@ -134,7 +134,7 @@ export const Flat = ({ check }) => {
           <button onClick={handlelogout}>Logout</button>
         </div>
       </div> */}
-      <Wrap>
+      <Wrap justify="space-evenly">
         {/* asc desc */}
         <Box className="leftContainer">
           <WrapItem>
@@ -144,7 +144,13 @@ export const Flat = ({ check }) => {
                   placeholder="Sort by Flat Number"
                   value={sort}
                   onChange={handleSort}
-                  style={{ border: "none" }}
+                  style={{
+                    border: "none",
+                    textAlign: "center",
+                    backgroundColor: "#e5ebf2",
+                    fontSize: "18px",
+                    padding: "8px",
+                  }}
                 >
                   <option value="asc">Ascending</option>
                   <option value="desc">Descending</option>
@@ -157,7 +163,12 @@ export const Flat = ({ check }) => {
             {/* filter */}
             <Center>
               <Box w="50" className="btnBorderClr">
-                <button onClick={handleFilterOwner}>Owner</button>
+                <button
+                  className="btnBorderClrChild"
+                  onClick={handleFilterOwner}
+                >
+                  Owner
+                </button>
               </Box>
             </Center>
           </WrapItem>
@@ -167,7 +178,12 @@ export const Flat = ({ check }) => {
               <Box w="50" className="btnBorderClr">
                 <Box>
                   {/* <button onClick={() => handleFilter("Tenant")}>Tenant</button> */}
-                  <button onClick={handleFilterTenant}>Tenant</button>
+                  <button
+                    className="btnBorderClrChild"
+                    onClick={handleFilterTenant}
+                  >
+                    Tenant
+                  </button>
                 </Box>
               </Box>
             </Center>
@@ -185,31 +201,39 @@ export const Flat = ({ check }) => {
         <WrapItem>
           <Center>
             {/* populate data in table */}
-            <Box>
+            <Box className="navbar2">
               <TableContainer>
-                <Center></Center>
+                {/* <Center></Center> */}
                 <Table>
-                  <Thead bg="LightSalmon">
-                    <Tr style={{ fontFamily: "fantasy" }}>
-                      <Th>Block</Th>
-                      <Th>Flat Number</Th>
-                      <Th>Resident Name</Th>
-                      <Th>Type</Th>
-                      <Th isNumeric>Number of Residents</Th>
-                      <Th>image</Th>
-                      <Th>Remove Flat</Th>
+                  <Thead>
+                    <Tr>
+                      <Th id="one">Block</Th>
+                      <Th id="two">Flat Number</Th>
+                      <Th id="three">Resident Name</Th>
+                      <Th id="four">Type</Th>
+                      <Th isNumeric id="five">
+                        Number of Residents
+                      </Th>
+                      <Th id="six">image</Th>
+                      <Th id="seven">Remove Flat</Th>
                     </Tr>
                   </Thead>
 
-                  <Tbody>
+                  <Tbody className="fontsize">
                     {data.slice(start, end).map((e, i) => {
                       return (
-                        <Tr key={i}>
+                        <Tr key={i} className="fontsize">
                           <Td>{e.block}</Td>
-                          <Td>{e.flat_number}</Td>
+                          <Td style={{ textAlign: "center" }}>
+                            {e.flat_number}
+                          </Td>
                           <Td>{e.name}</Td>
-                          <Td>{e.type}</Td>
-                          <Td isNumeric>{e.residents}</Td>
+                          <Td style={{ textTransform: "lowecase" }}>
+                            {e.type}
+                          </Td>
+                          <Td style={{ textAlign: "center" }} isNumeric>
+                            {e.residents}
+                          </Td>
                           <Td>
                             <Link to={`/flatdetails/${e._id}`}>
                               <img
@@ -220,12 +244,12 @@ export const Flat = ({ check }) => {
                               />
                             </Link>
                           </Td>
-                          <Td>
+                          <Td style={{ textAlign: "center" }}>
                             <button
                               className="delBtn"
                               onClick={() => deleteButton(e._id)}
                             >
-                              delete
+                              Delete
                             </button>
                           </Td>
                         </Tr>
@@ -255,6 +279,17 @@ export const Flat = ({ check }) => {
             </Box>
           </Center>
         </WrapItem>
+        {/* ////////////////////////// */}
+        <WrapItem>
+          <Box className="leftContainer">
+            <WrapItem>
+              <Center className="btnBorderSelect"></Center>
+            </WrapItem>
+            {/* owner tenant */}
+          </Box>
+        </WrapItem>
+
+        {/* ////////////////////////// */}
       </Wrap>
       {/* <Post posts={data} />
       <Paginate postPerend={postPerend} totalPosts={data.length} /> */}

@@ -6,7 +6,7 @@ export const Home = () => {
       <h1 className="heading">Apartment Management System</h1>
 
       <button className="addBtn">
-        <Link to="/flat" className="clickBtn">
+        <Link to="/flatform" className="clickBtn">
           Add Flat
         </Link>
       </button>
