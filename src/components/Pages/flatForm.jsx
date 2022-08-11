@@ -15,22 +15,45 @@ export const FlatForm = () => {
     gender: "",
     age: "",
   });
+
+  // validation part
+  const [block, setBlock] = useState("");
+  const [flat_number, setFlat_number] = useState("");
+  const [type, setType] = useState("");
+  const [image, setImage] = useState("");
+  const [residents, setResidents] = useState("");
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [error, setError] = useState(false);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({
       ...formData,
       [id]: value,
     });
-    // console.log("valid", value);
-    // console.log("valid", e.target);
-    // console.log("valid", id);
   };
-  const [validate, setValidate] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!e.target.value) {
-      setValidate(false);
+    if (
+      block.length === 0 ||
+      flat_number.length === 0 ||
+      type.length === 0 ||
+      image.length === 0 ||
+      residents.length === 0 ||
+      name.length === 0 ||
+      gender.length === 0 ||
+      age.length === 0
+    ) {
+      setError(true);
+      // var element = document.getElementsByTagName("input");
+      // element.style.marginBottom = "0px";
+      // element.style.borderC = "red";
+      document.querySelectorAll(".border").style.border = "thick solid #0000FF";
     }
+
     axios
       .post("https://apartmentauth.herokuapp.com/flat", formData)
       .then(() => {
@@ -57,124 +80,206 @@ export const FlatForm = () => {
             className="border"
             type="text"
             value={formData.block}
-            onChange={handleChange}
+            onChange={(e) => {
+              setBlock(e.target.value);
+              handleChange(e);
+            }}
             id="block"
             placeholder="Block"
           />
           <br />
           {/* vaidation */}
-          {validate ? (
-            ""
-          ) : (
+          {error && block.length <= 0 ? (
             <label className="validRes">Block feild should not be empty</label>
+          ) : (
+            ""
           )}
           <input
             className="border"
-            type="text"
+            type="number"
             value={formData.flat_number}
-            onChange={handleChange}
+            onChange={(e) => {
+              setFlat_number(e.target.value);
+              handleChange(e);
+            }}
             id="flat_number"
             placeholder="Flat Number"
+            // we have 1 - 100 flat only
+            min="1"
+            max="100"
           />
           <br />
-          {validate ? (
-            ""
-          ) : (
+          {/* vaidation */}
+          {error && flat_number.length <= 0 ? (
             <label className="validRes">
-              Flat Number feild should not be empty
+              Flat Number feild must be 1 to 100
             </label>
+          ) : (
+            ""
           )}
-          <input
+          {/* <input
             className="border"
             type="text"
             value={formData.type}
-            onChange={handleChange}
+            onChange={(e) => {
+              setType(e.target.value);
+              handleChange(e);
+            }}
             id="type"
             placeholder="Owner / Tenant"
+            pattern="[Oo]wner|[Tt]enant"
           />
-          <br />
-          {validate ? (
-            ""
+          <br /> */}
+          {/* gfhggggggggggggggggg */}
+          <select
+            className="border"
+            type="text"
+            value={formData.type}
+            onChange={(e) => {
+              setType(e.target.value);
+              handleChange(e);
+            }}
+            id="type"
+          >
+            <option value="">Select Owner / Tenant</option>
+            <option value="owner">Owner</option>
+            <option value="tenant">Tenant</option>
+          </select>
+
+          {/* vaidation */}
+          {error && type.length <= 0 ? (
+            <label className="validRes">Type must be owner or tenant</label>
           ) : (
-            <label className="validRes">Type feild should not be empty</label>
+            ""
           )}
           <input
             className="border"
             type="text"
             value={formData.image}
-            onChange={handleChange}
+            onChange={(e) => {
+              setImage(e.target.value);
+              handleChange(e);
+            }}
             id="image"
             placeholder="Image"
           />
           <br />
-          {validate ? (
-            ""
-          ) : (
+          {/* vaidation */}
+          {error && image.length <= 0 ? (
             <label className="validRes">Please enter valid Url</label>
+          ) : (
+            ""
           )}
           <input
             className="border"
-            type="text"
+            type="number"
             value={formData.residents}
-            onChange={handleChange}
+            onChange={(e) => {
+              setResidents(e.target.value);
+              handleChange(e);
+            }}
             id="residents"
-            placeholder="No of residence"
+            placeholder="Number of Residence"
+            min="1"
+            max="8"
           />
           <br />
-          {validate ? (
-            ""
-          ) : (
+          {/* vaidation */}
+          {error && residents.length <= 0 ? (
             <label className="validRes">
               Resident feild should not be emply
             </label>
+          ) : (
+            ""
           )}
           <input
             className="border"
             type="text"
             value={formData.name}
-            onChange={handleChange}
+            onChange={(e) => {
+              setName(e.target.value);
+              handleChange(e);
+            }}
             id="name"
             placeholder="Name"
           />
           <br />
-          {validate ? (
-            ""
-          ) : (
+          {/* vaidation */}
+          {error && name.length <= 0 ? (
             <label className="validRes">Name feild should not be emply</label>
+          ) : (
+            ""
           )}
-          <input
+          {/* <input
             className="border"
             type="text"
             value={formData.gender}
-            onChange={handleChange}
+            onChange={(e) => {
+              setGender(e.target.value);
+              handleChange(e);
+            }}
             id="gender"
             placeholder="Gender"
+            pattern="[Mm]ale|[Ff]emale"
           />
-          <br />
-          {validate ? (
-            ""
-          ) : (
+          <br /> */}
+          {/* vaidation */}
+          {/* {error && gender.length <= 0 ? (
             <label htmlFor="flat-Number" className="validRes">
-              Gender feild should not be emply
+              Gender feild must be male or female
             </label>
-          )}
-          <input
+          ) : (
+            ""
+          )} */}
+          {/*  sadasssssss*/}
+
+          <select
+            name="gender"
             className="border"
             type="text"
-            value={formData.age}
-            onChange={handleChange}
-            id="age"
-            placeholder="Age"
-          />
-          <br />
-          {validate ? (
-            ""
-          ) : (
+            value={formData.gender}
+            onChange={(e) => {
+              setGender(e.target.value);
+              handleChange(e);
+            }}
+            id="gender"
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          {/* vaidation */}
+          {error && gender.length <= 0 ? (
             <label htmlFor="flat-Number" className="validRes">
-              Age feild should not be emply
+              Gender feild must be male or female
             </label>
+          ) : (
+            ""
           )}
 
+          <input
+            className="border"
+            type="number"
+            value={formData.age}
+            onChange={(e) => {
+              setAge(e.target.value);
+              handleChange(e);
+            }}
+            id="age"
+            placeholder="Age"
+            // age must be equal to || greater than 18
+            min="18"
+            max="100"
+          />
+          <br />
+          {/* vaidation */}
+          {error && age.length <= 0 ? (
+            <label htmlFor="flat-Number" className="validRes">
+              Age feild must be greater than 18 years
+            </label>
+          ) : (
+            ""
+          )}
           <br />
           <input className="btnSumit" type="submit" />
         </form>

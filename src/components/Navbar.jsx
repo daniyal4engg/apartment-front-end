@@ -17,10 +17,11 @@ export const Navbar = () => {
         top: "0",
         width: "100%",
         backgroundColor: "black",
-
         borderBottom: "5px solid DarkGray",
         display: "flex",
         justifyContent: "center",
+        // overflow: "hidden",
+        zIndex: "10000",
       }}
     >
       <div

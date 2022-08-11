@@ -3,9 +3,10 @@
   padding: 3px;
   height: auto;
   width: 90%;
-  margin-bottom: 20px;
   padding: 5px 10px 5px 20px;
+  margin-bottom: 10px;
 }
+
 input {
   /* font-weight: bold;  */
   background-color: rgb(253, 253, 253);
@@ -48,13 +49,12 @@ p {
   margin-top: 130px;
 }
 form .validRes {
-  color: rgb(169, 48, 48);
-  /* padding-left: 0px; */
+  color: red;
   display: flex;
   justify-content: flex-start;
-  margin-left: 40px;
-  margin-top: 0px;
+  margin-left: 20px;
   font-size: small;
+  height: 20px;
 }
 .paragraph {
   color: black;

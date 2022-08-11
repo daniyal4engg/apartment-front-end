@@ -17,18 +17,14 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useAuth } from "../Context/Auth";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-export const Flat = ({ check }) => {
-  // login
-  const auth = useAuth();
-  const navigate = useNavigate();
 
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+export const Flat = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("asc");
-  // const [filterData, setFilterData] = useState([]);
+
   // filter
 
   useEffect(() => {
@@ -79,31 +75,31 @@ export const Flat = ({ check }) => {
     setData([...filterTenant]);
   };
 
-  //load more end Data
+  // load more end Data
   // const [endUpto, setendUpto] = useState(2);
   // const loadMoreData = () => {
   //   setendUpto(endUpto + 2);
   // };
   // slice(0, endUpto)
   const [start, setStart] = useState(0);
-  const [end, setend] = useState(3);
+  const [end, setend] = useState(5);
 
   // page next and stop
   const next = () => {
-    setStart(start + 3);
-    setend(end + 3);
+    setStart(start + 5);
+    setend(end + 5);
     if (end > data.length - 1) {
-      setStart(data.length - 3);
+      setStart(data.length - 5);
       setend(data.length);
     }
   };
   // page previos and stop
   const previous = () => {
-    setStart(start - 3);
-    setend(end - 3);
-    if (start < 1 || end < 3) {
+    setStart(start - 5);
+    setend(end - 5);
+    if (start < 1 || end < 5) {
       setStart(0);
-      setend(3);
+      setend(5);
     }
   };
 
@@ -118,22 +114,11 @@ export const Flat = ({ check }) => {
         setData(newList);
       });
   };
-  // logout btn extra
-  // const handlelogout = () => {
-  //   auth.logout();
-  //   navigate("/");
-  // };
 
   return (
-    <div className="backgroundImage">
+    <div>
       {/* Loading indicator */}
       {loading ? <Spinner size="xl" /> : ""}
-      {/* <div className="flx">
-        <div className="flexDiv">
-          {auth.user}
-          <button onClick={handlelogout}>Logout</button>
-        </div>
-      </div> */}
       <Wrap justify="space-evenly">
         {/* asc desc */}
         <Box className="leftContainer">
@@ -144,13 +129,7 @@ export const Flat = ({ check }) => {
                   placeholder="Sort by Flat Number"
                   value={sort}
                   onChange={handleSort}
-                  style={{
-                    border: "none",
-                    textAlign: "center",
-                    backgroundColor: "#e5ebf2",
-                    fontSize: "18px",
-                    padding: "8px",
-                  }}
+                  className="selectTag"
                 >
                   <option value="asc">Ascending</option>
                   <option value="desc">Descending</option>
@@ -192,7 +171,7 @@ export const Flat = ({ check }) => {
           <WrapItem>
             <Center>
               <Link to="/flatform">
-                <Button className="btn1">Add Flat</Button>
+                <button className="addBtn">Add Flat</button>
               </Link>
             </Center>
           </WrapItem>
