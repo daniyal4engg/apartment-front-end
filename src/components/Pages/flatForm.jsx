@@ -2,7 +2,7 @@ import "../../styles/flatform.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import swal from "sweetalert";
 export const FlatForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -57,7 +57,8 @@ export const FlatForm = () => {
     axios
       .post("https://apartmentauth.herokuapp.com/flat", formData)
       .then(() => {
-        alert("Flat added succussfully");
+        // alert("Flat added succussfully");
+        swal("Flat added succussfully!", "", "success");
         setFormData({
           block: "",
           flat_number: "",

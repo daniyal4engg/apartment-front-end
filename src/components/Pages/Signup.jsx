@@ -18,13 +18,13 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import swal from "sweetalert";
 export const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   // const [show, setShow] = useState(false);
   // const handleClick = () => setShow(!show);
   const navigate = useNavigate();
-
+  const [data, setData] = useState([]);
   const [userData, setUserData] = useState({
     first_name: "",
     last_name: "",
@@ -32,8 +32,6 @@ export const Signup = () => {
     phone_no: "",
     password: "",
   });
-
-  const [data, setData] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,6 +50,7 @@ export const Signup = () => {
       .post("https://apartmentauth.herokuapp.com/register", userData)
       .then(() => {
         alert("SignUp Successfully");
+        swal("Account Created Successfully!", "", "success");
         navigate("/login");
         setUserData({
           first_name: "",
@@ -180,178 +179,3 @@ export const Signup = () => {
     </Flex>
   );
 };
-
-// import {
-//   Box,
-//   Button,
-//   Heading,
-//   Center,
-//   InputGroup,
-//   InputRightElement,
-//   Text,
-//   Input,
-// } from "@chakra-ui/react";
-// import axios from "axios";
-// import { useEffect } from "react";
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-
-// export const Signup = () => {
-//   const navigate = useNavigate();
-//   const [show, setShow] = useState(false);
-//   const handleClick = () => setShow(!show);
-
-//   const [userData, setUserData] = useState({
-//     first_name: "",
-//     last_name: "",
-//     email: "",
-//     password: "",
-//     phone_no: "",
-//   });
-
-//   const [data, setData] = useState([]);
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setUserData({
-//       ...userData,
-//       [name]: value,
-//     });
-//     console.log(e.target);
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setUserData([...data, userData]);
-
-//     axios
-//       .post("https://apartmentauth.herokuapp.com/register", userData)
-//       .then(() => {
-//         alert("SignUp Successfully");
-//         navigate("/login");
-
-//         setUserData({
-//           first_name: "",
-//           last_name: "",
-//           email: "",
-//           password: "",
-//           phone_no: "",
-//         });
-//       });
-//   };
-
-//   useEffect(() => {
-//     getData();
-//   }, []);
-
-//   const getData = () => {
-//     axios.get("https://apartmentauth.herokuapp.com/register").then((res) => {
-//       setData(res.data);
-//       console.log(res.data);
-//     });
-//   };
-
-//   return (
-//     <Box
-//       m="auto"
-//       mt="50px"
-//       w="995px"
-//       h="940px"
-//       border="1px solid white"
-//       fontFamily='"Trade Gothic W01 Light", Arial, sans-serif'
-//     >
-//       <Heading
-//         mt="35px"
-//         as="h1"
-//         fontWeight="400"
-//         fontSize="24px"
-//         p="0px 0px 15px"
-//       >
-//         Create an Account
-//       </Heading>
-//       <Box bg={"black"} border="1px solid white"></Box>
-//       <Box w="360px" h="620px" m="auto" mt="15px">
-//         <Text color="#333333" fontSize="14px">
-//           First Name
-//         </Text>
-//         <Input
-//           name="first_name"
-//           onChange={handleChange}
-//           value={userData.first_name}
-//           mt="12px"
-//           borderRadius="none"
-//           w="356px"
-//           h="35px"
-//         />
-//         <Text mt="45px">Last Name</Text>
-//         <Input
-//           name="last_name"
-//           onChange={handleChange}
-//           value={userData.last_name}
-//           mt="12px"
-//           borderRadius="none"
-//           w="356px"
-//           h="35px"
-//         />
-//         <Text mt="45px">Email Name</Text>
-//         <Input
-//           name="email"
-//           onChange={handleChange}
-//           value={userData.email}
-//           mt="12px"
-//           borderRadius="none"
-//           w="356px"
-//           h="35px"
-//         />
-//         <Text mt="45px">Phone</Text>
-//         <Input
-//           name="phone_no"
-//           onChange={handleChange}
-//           value={userData.phone_no}
-//           mt="12px"
-//           borderRadius="none"
-//           w="356px"
-//           h="35px"
-//         />
-//         <Text mt="45px">Password</Text>
-//         <InputGroup size="md">
-//           <Input
-//             name="password"
-//             onChange={handleChange}
-//             value={userData.password}
-//             borderRadius="none"
-//             mt="2px"
-//             w="356px"
-//             h="35px"
-//             pr="4.5rem"
-//             type={show ? "text" : "password"}
-//           />
-//           <InputRightElement width="4.5rem">
-//             <Button
-//               h="35px"
-//               fontSize="13px"
-//               bg="none"
-//               borderRadius="none"
-//               onClick={handleClick}
-//             >
-//               {show ? "HIDE" : "SHOW"}
-//             </Button>
-//           </InputRightElement>
-//         </InputGroup>
-//         <Center mt="45px">
-//           <Button
-//             onClick={handleSubmit}
-//             w="196px"
-//             h="35px"
-//             colorScheme="blue"
-//             borderRadius="none"
-//             m="auto"
-//             fontSize="11px"
-//           >
-//             CREATE AN ACCOUNT
-//           </Button>
-//         </Center>
-//       </Box>
-//     </Box>
-//   );
-// };

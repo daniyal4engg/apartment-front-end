@@ -105,7 +105,7 @@ export const Flat = () => {
 
   // delete data
   const deleteButton = (_id) => {
-    console.log(_id);
+    // console.log(_id);
     axios
       .delete(`${"https://apartmentauth.herokuapp.com/flat"}/${_id}`)
       .then(() => {
@@ -243,6 +243,7 @@ export const Flat = () => {
                   onClick={() => {
                     previous();
                   }}
+                  disabled={start == 1}
                 >
                   Previous
                 </button>

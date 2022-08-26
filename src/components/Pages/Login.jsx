@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 // login check
 import { useAuth } from "../Context/Auth";
 export const Login = () => {
@@ -31,13 +32,14 @@ export const Login = () => {
         password: password,
       })
       .then((res) => {
-        alert("Access Allowed");
+        swal("Access Allowed!", "", "success");
         navigate("/");
         console.log(res.data);
       })
       .catch((e) => {
         console.log(e.message);
-        alert("Password is Wrong");
+        // alert("Password is Wrong");
+        swal("Password is Wrong!", "", "error");
         navigate("/signup");
       });
   };
@@ -95,7 +97,7 @@ export const Login = () => {
                   bg: "blue.500",
                 }}
               >
-                Sign in
+                Login in
               </Button>
             </Stack>
             <Stack pt={6}>

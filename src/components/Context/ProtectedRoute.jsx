@@ -3,6 +3,7 @@ import { useAuth } from "./Auth";
 
 export const ProtectedRoute = ({ children }) => {
   const auth = useAuth();
+  //const {login,logout} useContext(AuthContext);
   console.log("children", children);
 
   if (!auth.user) {
